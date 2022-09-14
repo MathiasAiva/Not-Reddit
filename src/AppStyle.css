@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    overflow: hidden;
+    background-color: #DAE1E7;
+}
+.redditBlue{
+    background-color: #DAE1E7;
+}
+.article{
+    display: flex;
+    justify-content: space-around;
+}

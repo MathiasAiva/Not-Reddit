@@ -1,0 +1,32 @@
+.PostContent{
+    background-color: white;
+    margin-top: 4rem;
+    width: 60%;
+    border-radius: 5px;
+    display: flex;
+    border: 0.1px solid #CCCDCD;
+}
+.PostCaption{
+    width: 90%;
+    margin: 1rem 0 1rem 0.5rem;
+}
+.votes{
+    background-color: #F9F8FA;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0.5rem 0 0.5rem;
+    border-radius: 5px;
+}
+.MainPostInfo{
+    margin-left: 0.5rem;
+}
+
+.voteArrows{
+    width: auto;
+    height: 32px;
+}
+.voteButton{
+    background-color: transparent;
+    border: transparent;
+}

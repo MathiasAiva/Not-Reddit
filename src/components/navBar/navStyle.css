@@ -1,0 +1,23 @@
+#icon{
+    width: auto;
+    height: 32px;
+    margin-right: 1rem;
+    margin-left: 2rem;
+}
+.content, #Navtitle{
+    display: flex;
+    align-items: center;
+}
+#searchBar{
+    width: 40rem;
+    height: 2rem;
+    border-radius: 2px;
+    background-color: #F7F7F9;
+    border: transparent;
+    margin-left: 10rem;
+    font-size: 1.2em;
+}
+.content{
+    background-color: white;
+    height: 3rem;
+}
