@@ -23,3 +23,12 @@
         Search: match all the subredits and give links. 
     }
 */
+
+import { configureStore } from "@reduxjs/toolkit";
+import postsSliceReducer from "./features/posts/postsSlice";
+
+export default configureStore({
+    reducer: {
+        posts: postsSliceReducer
+    }
+})

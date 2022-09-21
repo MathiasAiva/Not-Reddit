@@ -20,4 +20,6 @@
 .content{
     background-color: white;
     height: 3rem;
+    position: fixed;
+    width: 100%;
 }

@@ -20,13 +20,13 @@ export function Side() {
     "science",
     "worldnews",
   ];
-
+  let key = 0;
   return (
     <div>
       <ul className="side">
         {subreddits.map((subreddit) => {
           return (
-            <li>
+            <li key={key+=1}>
               <NavLink style={activeLinkColor} to={"/" + subreddit} className='subredditLinks'>
                 {subreddit}
               </NavLink>
@@ -34,9 +34,9 @@ export function Side() {
           );
         })}
       </ul>
-      <Routes>
+      {/* <Routes>
         <Route path={'/'+{subreddits}} element={<h1>AAA</h1>}/>
-      </Routes>
+      </Routes> */}
     </div>
   );
 }
