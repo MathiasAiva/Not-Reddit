@@ -4,13 +4,13 @@
 }
 
 body{
-    overflow: hidden;
     background-color: #DAE1E7;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .redditBlue{
     background-color: #DAE1E7;
 }
 .article{
     display: flex;
-    justify-content: space-around;
+    padding-top: 5rem;
 }
