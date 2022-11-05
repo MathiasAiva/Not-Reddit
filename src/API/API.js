@@ -5,7 +5,15 @@ const intialOptions = {
     accept: "application/json",
   },
 };
+export const getSubredditRules = async (subreddit, options = intialOptions) => {
+  const url = `${API_URL}/r${subreddit}/about/rules.json`;
 
+  const query = await fetch(url, options);
+  const jsonResponse = await query.json();
+  if (query.ok) return jsonResponse.rules;
+
+  throw new Error("Failed to fetch subreddit rules: " + subreddit);
+};
 export const getSubreddit = async (subreddit, options = intialOptions) => {
   const url = `${API_URL}/r${subreddit}/about.json`;
 
@@ -48,7 +56,7 @@ export const getAllSubreddits = async (options = intialOptions) => {
 
 export const getPost = async (post, options = intialOptions) => {
   const [subreddit, id] = post;
-  const url = `${API_URL}/r/${subreddit}/comments/${id}/.json`;
+  const url = `${API_URL}/${subreddit}/comments/${id}/.json`;
 
   const query = await fetch(url, options);
   const jsonResponse = await query.json();
@@ -56,7 +64,7 @@ export const getPost = async (post, options = intialOptions) => {
     return {
       after: jsonResponse[0].data.after,
       before: jsonResponse[0].data.before,
-      subreddits: jsonResponse[0].data.map((pst) => pst.data),
+      subreddits: jsonResponse[0].data,
     };
 
   throw new Error("Failed to fetch post");
@@ -64,7 +72,7 @@ export const getPost = async (post, options = intialOptions) => {
 
 export const getComments = async (post, options = intialOptions) => {
   const [subreddit, id] = post;
-  const url = `${API_URL}/r/${subreddit}/comments/${id}/.json`;
+  const url = `${API_URL}/${subreddit}/comments/${id}/.json`;
 
   const query = await fetch(url, options);
   const jsonResponse = await query.json();
@@ -72,19 +80,21 @@ export const getComments = async (post, options = intialOptions) => {
     return {
       after: jsonResponse[1].data.after,
       before: jsonResponse[1].data.before,
-      subreddits: jsonResponse[1].data.map((cmt) => cmt.data),
+      subreddits: jsonResponse[1].data,
     };
 
   throw new Error("Failed to fetch comments");
 };
 
 export const getUser = async (username, options = intialOptions) => {
+  if(username === undefined){
+    return null;
+  }
   const url = `${API_URL}/user/${username}/about.json`;
 
   const query = await fetch(url, options);
   const jsonResponse = await query.json();
   if (query.ok) return jsonResponse.data;
-    
 
   throw new Error("Failed to fetch user");
 };
