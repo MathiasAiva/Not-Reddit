@@ -1,0 +1,38 @@
+.userAgreement {
+  background-color: #fff;
+  border-radius: 5px;
+  border: 0.1px solid #cccdcd;
+  width: 70%;
+  padding: 4% 3%;
+  margin-top: 1rem;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 3.2rem;
+}
+.Policies,
+.Languages {
+  margin-bottom: 1rem;
+  border-bottom: 0.1px solid #cccdcd;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+}
+.Policies {
+  grid-template-rows: 1fr 1fr;
+}
+.Languages {
+  grid-template-rows: 1fr 1fr 1fr;
+}
+.Policy, .ua-footer-text, .Language {
+  font-size: 0.75em;
+}
+.Policy, .Language{
+  width: 90%;
+}
+.ua-footer-text{
+  padding-left: 0.5rem;
+}
+.reddit-link{
+    font-size: 1em;
+}

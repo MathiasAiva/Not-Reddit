@@ -1,25 +1,41 @@
-#icon{
-    width: auto;
-    height: 32px;
-    margin-right: 1rem;
-    margin-left: 2rem;
+#icon {
+  width: auto;
+  height: 38px;
+  margin-right: 0.5rem;
+  margin-left: 2rem;
 }
-.content, #Navtitle{
-    display: flex;
-    align-items: center;
+.nav-content,
+#Navtitle {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #343434;
 }
-#searchBar{
-    width: 40rem;
-    height: 2rem;
-    border-radius: 2px;
-    background-color: #F7F7F9;
-    border: transparent;
-    margin-left: 10rem;
-    font-size: 1.2em;
+
+#Reddit {
+  color: #0c62a0;
+  font-size: 1em;
+  font-weight: bold;
 }
-.content{
-    background-color: white;
-    height: 3rem;
-    position: fixed;
-    width: 100%;
+#searchBar {
+  width: 40rem;
+  height: 2rem;
+  border-radius: 2px;
+  background-color: #f7f7f9;
+  border: transparent;
+  margin-left: 10rem;
+  font-size: 1.2em;
+}
+#Not-Reddit {
+  font-size: 1.7em;
+  font-weight: bold;
+}
+.nav-content {
+  border: 0.1px solid #cccdcd;
+  background-color: white;
+  height: 3rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
 }

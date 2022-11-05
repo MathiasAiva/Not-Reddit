@@ -1,0 +1,39 @@
+.subredditRules {
+  background-color: white;
+  width: 20rem;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+}
+.rules-title {
+  color: white;
+  margin-left: 1rem;
+}
+.rulesList {
+  padding-left: 2rem;
+}
+.rule {
+  margin-top: 1rem;
+}
+.banner {
+  height: 2.8rem;
+}
+.rule-text {
+  width: 80%;
+  display: flex;
+  align-items: flex-end;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+.rule-text:active .rule-show-arrow,
+.rule-description .rule-show-arrow {
+  transform: rotate(-90deg);
+}
+.rule-description {
+  width: 80%;
+  font-weight: lighter;
+  font-size: 0.9em;
+  display: none;
+}
+.rule-content:active .rule-description {
+  display: block;
+}

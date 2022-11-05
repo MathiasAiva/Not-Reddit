@@ -1,0 +1,39 @@
+.commentSkeleton {
+  margin-left: 1rem;
+}
+
+.skeleton .thumbnail-ico {
+  width: 32px;
+  min-height: 32px;
+  margin-top: 15px;
+  background: #d2dbe2;
+  border-radius: 1rem;
+}
+
+.cmt-sm {
+  margin-left: 7px;
+  width: 10rem;
+  background: #d2dbe2;
+  border-radius: 1px;
+  min-height: 14px;
+  margin-top: 10px;
+}
+.skeleton .text-lg-cmt,
+.skeleton .text-md-cmt,
+.skeleton .text-sm-cmt {
+  background: #d2dbe2;
+  border-radius: 1px;
+  margin-top: 10px;
+}
+.text-lg-cmt {
+  width: 90%;
+  min-height: 20px;
+}
+.text-md-cmt {
+  width: 86%;
+  min-height: 20px;
+}
+.text-sm-cmt {
+  width: 79%;
+  min-height: 20px;
+}

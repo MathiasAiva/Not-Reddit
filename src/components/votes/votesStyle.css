@@ -1,0 +1,21 @@
+.votes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  padding: 0.5rem 0.5rem 0 0.5rem;
+  border-radius: 5px;
+}
+.UpVoteAmount {
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.voteArrows {
+  width: auto;
+  height: 32px;
+}
+.voteButton {
+  background-color: transparent;
+  border: transparent;
+}

@@ -1,42 +1,17 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { Route, Routes } from "react-router-dom";
-import './side.css'
+import "./side.css";
+import { DisplayTopCategories } from "./displayTopReddits/displayTopCategories";
+import { UserAgreement } from "./UserAgreement/userAgreement";
+import { SubredditInfo } from "./SubredditInfo/subredditInfo";
+import { SubredditRules } from "./subreddiRules/subredditRules";
 
-const activeLinkColor = ({ isActive }) => {
-  return {
-    display: "block",
-    color: isActive ? "red" : "",
-  }; // Activates when the link gets clicked
-};
-
-export function Side() {
-  const subreddits = [
-    "funny",
-    "AskReddit",
-    "gaming",
-    "aww",
-    "Music",
-    "science",
-    "worldnews",
-  ];
-  let key = 0;
+export function Side({ categories, userAgreement, subredditInfo, arg, subredditRules }) {
   return (
     <div>
-      <ul className="side">
-        {subreddits.map((subreddit) => {
-          return (
-            <li key={key+=1}>
-              <NavLink style={activeLinkColor} to={"/" + subreddit} className='subredditLinks'>
-                {subreddit}
-              </NavLink>
-            </li>
-          );
-        })}
-      </ul>
-      {/* <Routes>
-        <Route path={'/'+{subreddits}} element={<h1>AAA</h1>}/>
-      </Routes> */}
+      {categories ? <DisplayTopCategories /> : null}
+      {userAgreement ? <UserAgreement /> : null}
+      {subredditInfo ? <SubredditInfo arg={arg}/> : null}
+      {subredditRules ? <SubredditRules arg={arg}/> : null}
     </div>
   );
 }

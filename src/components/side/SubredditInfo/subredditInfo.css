@@ -1,0 +1,48 @@
+.subS {
+  width: 20rem;
+}
+.banner {
+  background-color: #288eda;
+  height: 2rem;
+  border-radius: 5px 5px 0 0;
+}
+.subS-info {
+  background-color: #fffefe;
+  font-size: 14px;
+  padding: 0.5rem 0.7rem;
+  border-radius: 0 0 5px 5px;
+}
+.subS-info-text {
+  margin-top: 0.5rem;
+}
+.subS-data {
+  margin-top: 1rem;
+  padding: 0.5rem 0;
+  border-top: 0.1px solid #eeeeef;
+  border-bottom: 0.1px solid #eeeeef;
+}
+.subS-stats {
+  font-size: 1em;
+}
+.subS-stats-desc {
+  font-size: 0.8em;
+  color: #c0c1c1;
+}
+
+.joinSubreddit {
+  margin-top: 1rem;
+  background-color: #288eda;
+  width: 99%;
+  border: none;
+  color: #fffefe;
+  padding: 0.35rem 0;
+  border-radius: 16px;
+  font-weight: bold;
+}
+.joinSubreddit:hover {
+  background-color: #4095d6;
+  cursor: pointer;
+}
+.joinSubreddit:active {
+  background-color: #509bd5;
+}

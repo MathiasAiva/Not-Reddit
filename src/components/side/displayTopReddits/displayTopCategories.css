@@ -1,0 +1,32 @@
+.cat-showcase {
+  background-color: white;
+  border-radius: 5px;
+  border: 0.1px solid #cccdcd;
+  font-size: 1rem;
+  width: 76%;
+}
+.cat-header {
+  background-image: url("./banner-background.png");
+  background-repeat: no-repeat;
+  background-size: 110%;
+  background-position: center;
+}
+.cat-title {
+  padding-top: 2rem;
+  padding-bottom: 0.4rem;
+  color: rgb(252, 252, 252);
+  margin-left: 0.4rem;
+  font-size: 1.05em;
+}
+.category-li {
+  border-top: 0.1px solid #cccdcd;
+  list-style: none;
+  padding: 1rem;
+}
+.category {
+  color: #171717;
+  text-decoration: none;
+}
+.category-text{
+  font-size: 0.95em;
+}
