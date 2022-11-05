@@ -1,0 +1,50 @@
+.u-data-display {
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  z-index: 5;
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  border: 0.1px solid #cccdcd;
+  border-radius: 5px;
+}
+
+.u-header {
+  background: linear-gradient(180deg, #4dbae5 10%, #ffffff 10%);
+  display: flex;
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-left: 0.5rem;
+}
+.u-header-text{
+    margin-left: 0.3rem;
+}
+.u-header-avatar {
+  background: linear-gradient(180deg, #4dbae5 40%, #ffffff 40%);
+  padding-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.u-avatar {
+  margin-bottom: 1rem;
+}
+.u-mainText {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-top: 0.2rem;
+}
+.u-descText {
+  font-weight: normal;
+  color: rgb(95, 95, 95);
+  font-size: 0.9em;
+}
+.u-data {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin-top: 1.2rem;
+  margin-left: 1rem;
+}
