@@ -17,7 +17,11 @@ export const postsSlice = createSlice({
     isLoading: false,
     hasError: false,
   },
-  reducers: {},
+  reducers: {
+    cleanCurrentPosts: (state) => {
+      state.currentPosts = [];
+    }
+  },
   extraReducers: {
     [updateCurrentPosts.pending]: (state, action) => {
       state.status = "loading";
