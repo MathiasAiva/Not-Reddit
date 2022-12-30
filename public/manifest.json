@@ -18,7 +18,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "https://www.notreddit-6b72d.web.app/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"

@@ -3,6 +3,8 @@ import downVote from "./downVote.svg";
 import "./votesStyle.css"
 
 export const Votes = ({score}) => {
+  // This is static, users can't interact with it.
+  // I might implement login in the future and make this usable
     return(
         <div className="votes">
             <button className="upVote voteButton">

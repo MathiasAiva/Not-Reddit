@@ -2,14 +2,14 @@
   background-color: white;
   margin-bottom: 1rem;
   margin-right: 3rem;
-  width: 45rem;
   border-radius: 5px;
   border: 0.1px solid #cccdcd;
-  margin-left: 35rem;
+  margin-left: 50vh;
 }
-.Post{
+.Post {
   line-height: 1.3;
   display: flex;
+  width: 50rem;
 }
 .PostContent {
   padding: 1.5rem 0 1rem 1rem;
@@ -40,8 +40,24 @@
 }
 .postImage {
   margin: auto;
-  width: 25rem;
-  height: auto;
-  max-height: 1080px;
   object-fit: cover;
 }
+@media only screen and (max-width:480px){
+  .PostStyling {
+    margin-left: 0;
+  }
+  .Post {
+    width: 112%;
+  }
+  .postImage{
+    display: none;
+  }
+} 
+@media only screen and (min-width: 481px) and (max-width:850px){
+  .PostStyling {
+    margin-left: 5%;
+  }
+  .Post {
+    width: 90%;
+  }
+} 

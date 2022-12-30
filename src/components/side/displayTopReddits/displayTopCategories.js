@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import './displayTopCategories.css'
+import '../side.css'
 
 import { topCategories } from "./data";
 import { getTopCategory } from "../../../appResources/helperFunctions";
-import { updateCurrentPosts } from "../../../features/posts/postsSlice";
-
 export const DisplayTopCategories = () => {
   const dispatch = useDispatch();
   let { name, items } = getTopCategory(topCategories);
@@ -24,10 +23,6 @@ export const DisplayTopCategories = () => {
             <li key={(key += 1)} className="category-li">
               <Link
                 to={"/" + category}
-                state={{ category: category }}
-                onClick={() =>
-                  dispatch(updateCurrentPosts(category.replace("r", "")))
-                }
                 className="category"
               >
                 <h1 className="category-text">{category}</h1>

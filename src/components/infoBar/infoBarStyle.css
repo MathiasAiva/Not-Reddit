@@ -1,0 +1,87 @@
+.infoBar{
+    margin-bottom: 2rem;
+}
+.bannerImg {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 8.5rem;
+  background-color: blue;
+}
+.topInfo {
+  align-items: center;
+  background-color: white;
+}
+.subIcon {
+  border-radius: 180px;
+  width: 100px;
+  height: 100px;
+  margin-right: 1rem;
+  margin-left: 50vh;
+  position: relative;
+  top: -0.5rem;
+  border: 0.4rem white solid;
+  background-color: white;
+}
+.subButton {
+  margin-left: 1rem;
+  width: 6rem;
+  border: none;
+  border-radius: 2rem;
+}
+.subButton:hover {
+  filter: brightness(85%);
+}
+.subButton:active {
+  filter: brightness(80%);
+}
+.postCreate{
+  background-color: white;
+  width: 50rem;
+  justify-content: center;
+  padding: 0.5rem 0;
+  border-radius: 5px;
+  margin-top: 2rem;
+  margin-left: 50vh;
+  align-items: center;
+}
+.createPostInput{
+  border-radius: 2px;
+  border: none;
+  width: 40rem;
+  height: 2.5rem;
+  background-color: #f7f7f9;
+  padding-left: 1rem;
+}
+.createPostInput:active{
+  border: 1px solid #9b9b9b;
+}
+.actionIcon{
+  background-color: transparent;
+  border: none;
+  margin-left: 1rem;
+}
+@media only screen and (max-width:480px){
+  .postCreate{
+    margin-left: 10%;
+    width: 95%;
+    padding: 0 0.5rem 0 0 ;
+  }
+  .subIcon{
+    margin-left: 0;
+  }
+} 
+@media only screen and (min-width: 481px) and (max-width:850px){
+  .postCreate{
+    margin-left: 5%;
+    width: 89%;
+    padding: 0 0.5rem 0 0 ;
+  }
+  .subIcon{
+    margin-left: 0;
+  }
+  .infoBar{
+    width: 100%;
+  }
+
+} 

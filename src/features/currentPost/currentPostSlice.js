@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getPost, getComments, getSubreddit } from "../../../API/API";
+import { getPost, getComments } from "../../API/API";
 
 export const updateCurrentPostData = createAsyncThunk(
   "currentPost/updateCurrentPostData",
@@ -16,8 +16,6 @@ export const currentPostSlice = createSlice({
   initialState: {
     currentPostData: [],
     status: "idling",
-    isLoading: false,
-    hasError: false,
   },
   reducers: {},
   extraReducers: {

@@ -1,25 +1,29 @@
-import { repliesCleaner } from "../../../appResources/helperFunctions";
-import { getUser } from "../../../API/API";
-import { useState, useEffect } from "react";
+import { repliesCleaner } from "../../appResources/helperFunctions";
+import { useState } from "react";
 import { UserDataDisplay } from "./users/userData";
 
 export const CommentSection = ({ arr, users }) => {
+  // Using recursion to show the comments and replies in order
+
   const [state, setState] = useState({ visible: false, id: 0 });
   const [delayHandler, setDelayHandler] = useState(null);
   return (
     <ul>
       {arr.map((comment) => {
         let user;
+        // Match imported user to comment author:
+          // Finding the user: 
         if (users) {
           user = users.filter((el) => {
             return el.name === comment.author;
           });
-        }
+        } 
         const u = user[0];
         return comment.body ? (
           <li key={comment.id} className="comment" id={comment.id}>
             <div className="commentBody">
               <header style={{ display: "flex" }} className="commentHeader">
+                {/* User Info Display: */}
                 <img
                   src={u ? u.image : ""}
                   alt=""
@@ -65,6 +69,7 @@ export const CommentSection = ({ arr, users }) => {
                 />
               ) : null}
               <article>
+                {/* Comment text: */}
                 <pre
                   className="commentText"
                   children={comment.body.replace("amp;", "")}
@@ -73,6 +78,7 @@ export const CommentSection = ({ arr, users }) => {
             </div>
             <ul>
               <li className="comment reply">
+                {/* RECURSION!!! */}
                 <CommentSection
                   arr={repliesCleaner(comment.replies)}
                   users={users}

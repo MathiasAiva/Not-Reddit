@@ -5,6 +5,9 @@ const intialOptions = {
     accept: "application/json",
   },
 };
+
+// The API Interaction :D
+
 export const getSubredditRules = async (subreddit, options = intialOptions) => {
   const url = `${API_URL}/r${subreddit}/about/rules.json`;
 
@@ -22,6 +25,15 @@ export const getSubreddit = async (subreddit, options = intialOptions) => {
   if (query.ok) return jsonResponse.data;
 
   throw new Error("Failed to fetch subreddit: " + subreddit);
+};
+export const getBestPosts = async (options = intialOptions) => {
+  const url = `${API_URL}/best.json`;
+
+  const query = await fetch(url, options);
+  const jsonResponse = await query.json();
+  if (query.ok) return jsonResponse.data;
+
+  throw new Error("Failed to fetch best posts");
 };
 
 export const getSubredditPosts = async (subreddit, options = intialOptions) => {
@@ -87,7 +99,7 @@ export const getComments = async (post, options = intialOptions) => {
 };
 
 export const getUser = async (username, options = intialOptions) => {
-  if(username === undefined){
+  if(username === undefined || username === '[deleted]'){
     return null;
   }
   const url = `${API_URL}/user/${username}/about.json`;

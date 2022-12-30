@@ -1,49 +1,61 @@
+// IMPORTS:
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { NavBar } from "./components/navBar/navbar.js";
-import { Post } from "./features/posts/posts.js";
-import { CurrentPost } from "./features/posts/currentPost/currentPost.js";
+import { Posts } from "./features/posts/posts.js";
+import { CurrentPost } from "./features/currentPost/currentPost.js";
 import store from "./store";
 import "./AppStyle.css";
 import { Provider } from "react-redux";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
+
+// CODE START:
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 function App() {
   return (
     <Provider store={store}>
       <NavBar id="NavBar" />
+      {/* Navbar is always shown */}
       <Routes>
         <Route
           path="/"
           element={
             <div className="article">
-              <div className="Posts">
-                <Post />
+              <div>
+                <Posts isSubreddit={false} />
+                {/* false = default route */}
               </div>
             </div>
           }
-        />
+        />{" "}
         <Route
           path="/r/:subreddit"
           element={
             <div className="article">
-              <div className="Posts">
-                <Post />
+              <div>
+                <Posts isSubreddit={true} />
+                {/* true = subreddit route, change look */}
               </div>
             </div>
           }
         />
-        <Route path={"/:id"} element={<CurrentPost />} />
+        {/*Current Post*/}
+        <Route path={"post/:id/:name/"} element={<CurrentPost />} />
+        <Route
+          path={"r/:subreddit/post/:id/:name/"}
+          element={<CurrentPost />}
+        />
       </Routes>
     </Provider>
   );
 }
 
 export default function ScrollToTop() {
+  // Resets scroll when changing pages
   const { pathname } = useLocation();
   useEffect(() => {
     document.documentElement.scrollTo({

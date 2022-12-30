@@ -11,20 +11,30 @@
 .rulesList {
   padding-left: 2rem;
 }
+.rule:first-child{
+  border-top: none;
+  margin-top: 0.5rem;
+}
 .rule {
   margin-top: 1rem;
+  border-top: 0.1px solid #eeeeef;
 }
 .banner {
   height: 2.8rem;
 }
 .rule-text {
   width: 80%;
-  display: flex;
-  align-items: flex-end;
-  overflow-wrap: break-word;
-  word-break: keep-all;
 }
-.rule-text:active .rule-show-arrow,
+.rule-show-arrow{
+  margin-left: 2rem;
+  margin-top: 0.5rem;
+}
+
+.rule-content{
+  display: flex;
+  align-items: baseline;
+}
+.rule-content:active .rule-show-arrow,
 .rule-description .rule-show-arrow {
   transform: rotate(-90deg);
 }

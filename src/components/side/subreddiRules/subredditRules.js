@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import "./subreddiRules.css";
+import '../side.css'
 import { getSubredditRules } from "../../../API/API";
 import downArrow from "./downArrow.svg";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 export const SubredditRules = ({ arg }) => {
   const [rules, setRules] = useState({
@@ -30,25 +32,25 @@ export const SubredditRules = ({ arg }) => {
       <ol className="rulesList">
         {subData.map((rule) => {
           return (
-            <li className="rule">
+            <li className="rule" key={rule.short_name}>
               <div className="rule-content">
                 <div className="rule-text">
-                  {rule.short_name}
+                  {rule.short_name}{" "}
                   {rule.description ? (
-                    <img
-                      src={downArrow}
-                      alt=""
-                      style={{ width: "20px", height: "auto" }}
-                      className="rule-show-arrow"
-                    />
+                    <ReactMarkdown className="rule-description">
+                      {rule.description}
+                    </ReactMarkdown>
                   ) : null}
                 </div>
-                <div>
-                  {" "}
-                  {rule.description ? (
-                    <h3 className="rule-description">{rule.description}</h3>
-                  ) : null}
-                </div>
+
+                {rule.description ? (
+                  <img
+                    src={downArrow}
+                    alt=""
+                    style={{ width: "20px", height: "auto" }}
+                    className="rule-show-arrow"
+                  />
+                ) : null}
               </div>
             </li>
           );

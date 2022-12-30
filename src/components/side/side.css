@@ -1,21 +1,13 @@
-.subredditLinks {
-  color: black;
-  text-decoration: none;
-  border-top: solid 0.1px #eceef1;
-  width: 100%;
-  margin: 0.1rem 0;
-  height: 2rem;
-  padding-top: 1rem;
-}
 
-.side {
-  background-color: #ffffff;
-  margin-left: 0;
-  margin-right: 3rem;
-  margin-top: 2rem;
-  width: 10rem;
-  text-align: center;
-  list-style-type: none;
-  border-radius: 5px;
-  border: 0.1px solid #cccdcd;
-}
+@media only screen and (max-width: 480px){
+    .cat-showcase, .subredditRules, .subS, .userAgreement{
+        display: none;
+    }
+} 
+
+
+@media only screen and (min-width: 481px) and (max-width:850px){
+    .cat-showcase, .subredditRules, .subS, .userAgreement{
+        display: none;
+    }
+  } 

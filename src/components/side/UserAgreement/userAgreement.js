@@ -1,5 +1,6 @@
 import { React } from "react";
 import "./UserAgreementStyle.css";
+import '../side.css'
 
 export const UserAgreement = () => {
   return (

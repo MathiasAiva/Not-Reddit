@@ -1,5 +1,5 @@
 import "./userDataStyle.css";
-import { numberFormatter } from "../../../../appResources/helperFunctions";
+import { numberFormatter } from "../../../appResources/helperFunctions";
 
 export const UserDataDisplay = ({ u, visible }) => {
   return u ? (

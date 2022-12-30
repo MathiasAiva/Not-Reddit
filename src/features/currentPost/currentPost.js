@@ -1,26 +1,27 @@
-// React Imports:
+// IMPORTS:
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-// Resources Imports:
-import "../resources/CurrentPostStyle.css";
-import "../resources/PostsStyles.css";
-// Function Imports:
+import "./CurrentPostStyle.css";
+import "../posts/resources/PostsStyles.css";
 import { updateCurrentPostData } from "./currentPostSlice";
 import {
   complexPostCleaner,
   commentCleaner,
-} from "../../../appResources/helperFunctions";
+} from "../../appResources/helperFunctions";
 import { CommentSection } from "./commentSection";
-import { CurrentPostSkeleton } from "../../../components/skeletons/currentPostSkeleton";
-import { Votes } from "../../../components/votes/votes";
-import { Side } from "../../../components/side/side";
-import { getUser } from "../../../API/API";
-import { repliesCleaner } from "../../../appResources/helperFunctions";
-////////////////////////////////////////////////////////////////////////////////////
+import { CurrentPostSkeleton } from "../../components/skeletons/currentPostSkeleton";
+import { Votes } from "../../components/votes/votes";
+import { Side } from "../../components/side/side";
+import { getUser } from "../../API/API";
+import { repliesCleaner } from "../../appResources/helperFunctions";
+
+// CODE START:
+
 const u = [];
+
 const getAllUsers = (arr) => {
   arr.forEach((e) => {
     const replies = repliesCleaner(e.replies);
@@ -35,7 +36,9 @@ export function CurrentPost(props) {
   // Variables:
   const dispatch = useDispatch();
   const location = useLocation();
+  const [users, setUsers] = useState([]);
   const { id, subreddit } = location.state;
+  
   useEffect(() => {
     dispatch(updateCurrentPostData([subreddit, id]));
   }, [subreddit, id, dispatch]);
@@ -51,19 +54,24 @@ export function CurrentPost(props) {
     } else return [];
   });
 
+  //Assign variables to the data obtained:
   const { post, comments } = data;
-  const [users, setUsers] = useState([]);
+
+  // Get users from comments:
   if (status === "fulfilled") {
     getAllUsers(comments);
   }
+
+  /* Clean the comment users and assing them
+   in a ordered array: */
   useEffect(() => {
     u.forEach((el) => {
       el.then((a) => {
         if (a) {
           setUsers((prev) => [
             ...prev,
-            {
-              image: a.icon_img.replace(/amp;/g, ""),
+            { // filter data:
+              image: a.icon_img ? a.icon_img.replace(/amp;/g, "") : null,
               name: a.name,
               awardee_karma: a.awardee_karma,
               awarder_karma: a.awarder_karma,
@@ -78,10 +86,10 @@ export function CurrentPost(props) {
       });
     });
   }, [status]);
-  const filteredUsers = [
+  const filteredUsers = [ 
+    // Clean users that commented more than 1 time
     ...new Map(users.map((item) => [item.id, item])).values(),
   ];
-  console.log(filteredUsers);
   // Display Code:
   return (
     <div style={{ display: "flex", marginTop: "6rem" }}>
@@ -110,7 +118,7 @@ export function CurrentPost(props) {
                       <ReactMarkdown
                         className="PostSelfText"
                         children={post.selftext
-                          .replace("amp;", "")
+                          .replace(/amp;/g, "")
                           .replace("&#x200B;", "")}
                         remarkPlugins={[remarkGfm]}
                       />
@@ -118,7 +126,7 @@ export function CurrentPost(props) {
                     {post.preview && post.preview.images ? (
                       <img
                         src={post.preview.images[0].source.url.replace(
-                          "amp;",
+                          /amp;/g,
                           ""
                         )}
                         alt={post.preview.images[0].id}

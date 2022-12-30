@@ -12,15 +12,13 @@ export const updateCurrentPosts = createAsyncThunk(
 export const postsSlice = createSlice({
   name: "posts",
   initialState: {
-    currentPosts: [],
+    currentPosts: [], // Array full of posts
     status: "idling",
-    isLoading: false,
-    hasError: false,
   },
   reducers: {
     cleanCurrentPosts: (state) => {
       state.currentPosts = [];
-    }
+    } // Clean Posts
   },
   extraReducers: {
     [updateCurrentPosts.pending]: (state, action) => {

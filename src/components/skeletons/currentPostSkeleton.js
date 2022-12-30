@@ -4,6 +4,8 @@ import { VoteSkeleton } from "./vote/voteSkeleton";
 import { CommentSkeleton } from "./comment/commentSkeleton";
 
 export const CurrentPostSkeleton = () => {
+  // Look, skeletons are annoying and I didn't fully tune them
+
   return (
     <div className="skeleton-wrapper" style={{width:'45rem'}}>
       <div className="sk-content">

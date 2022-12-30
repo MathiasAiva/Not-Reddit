@@ -1,6 +1,7 @@
 import { updateCurrentPosts } from "../features/posts/postsSlice";
 import { postsSlice } from "../features/posts/postsSlice";
 import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 
 export function numberFormatter(num) {
   // Formats Numbers, so If you got 10000 it will return 10k
@@ -23,6 +24,7 @@ export function numberFormatter(num) {
 }
 
 export const dateFormatter = (int) => {
+  // Make dates pretty :)
   const date = new Date(int * 1000);
   return {
     year: date.getFullYear(),
@@ -33,8 +35,11 @@ export const dateFormatter = (int) => {
   };
 };
 export const getDateDifference = (d2) => {
+  // Some Math :D
   const x = 1000 * 60 * 60 * 24;
   const d1 = new Date();
+
+  // Convert current Date and given Date to UTC:
   const utc1 = Date.UTC(
     d1.getFullYear(),
     d1.getMonth(),
@@ -47,7 +52,11 @@ export const getDateDifference = (d2) => {
     d2.getDate(),
     d2.getHours()
   );
+
+  // Get the difference:
   const diff = Math.floor(utc1 - utc2);
+
+  // Show minutes - hours - days, depending on diff
   let t = diff / x;
   if (t * 24 * 60 < 60) {
     return t * 24 * 60;
@@ -133,6 +142,7 @@ export const complexPostCleaner = (pst) => {
 };
 
 export const commentCleaner = (cmmnt) => {
+  // Extract and clean data from a comment
   const commentData = cmmnt.comments.subreddits.children;
   let comments = commentData.map((e) => {
     const dt = e.data;
@@ -153,6 +163,7 @@ export const commentCleaner = (cmmnt) => {
 };
 
 export const repliesCleaner = (rpl) => {
+  // Clean and extract data from the replies to a comment
   let replies = rpl.map((e) => {
     const dt = e.data;
     const reply = {
@@ -190,24 +201,65 @@ export const deleteCurrentPosts = () => {
   };
 };
 
-export const resizeImages = (w, h) => {
-  let width = w / 2;
-  let height = h / 2;
-  // const x = parseFloat((h / w).toFixed(2));
-  // let ratio;
-  // if (x < 1) {
-  //   ratio = [1 + x, 1];
-  //   width = w * (ratio[0] * 0.40);
-  //   height = h * (ratio[1] * 0.40);
-  // } else if (x > 1) {
-  //   ratio = [1, 1 + x];
-  //   width = w * (ratio[0] * 0.50);
-  //   height = h * (ratio[1] * 0.30);
-  // } else {
-  //   ratio = [1, 1];
-  // }
-  return {
-    width: width,
-    height: height,
-  };
+export const resizeImages = (resolutions) => {
+  let finalR = {};
+  const maxH = 720;
+  const maxW = 630;
+  //Get the image resolution that fall's inside my parameters
+  resolutions.forEach((res) => {
+    if (res.width <= maxW && res.height <= maxH) {
+      finalR = {
+        width: res.width,
+        height: res.height,
+      };
+    }
+  });
+  // Get the difference between the resolution and the parameters
+  const hDiff = maxH / finalR.height;
+  const wDiff = maxW / finalR.width;
+  
+  // Resize image depending on parameters
+  if (hDiff > 1.2 && wDiff > 1) {
+    finalR.height *= 1.4;
+    finalR.width *= 1.4;
+  } else if (hDiff > 1 && wDiff > 1) {
+    finalR.height *= 1.2;
+    finalR.width *= 1.2;
+  }
+
+  return finalR;
 };
+
+export const useWindowSize = () => {
+  // Got this from StackOverflow, I lost the URL
+
+  const [windowSize, setWindowSize] = useState({
+      width: undefined,
+      height: undefined
+  });
+
+  useEffect(() => {
+      // only execute all the code below in client side
+      if (typeof window !== "undefined") {
+          // Handler to call on window resize
+          function handleResize() {
+              // Set window width/height to state
+              setWindowSize({
+                  width: window.innerWidth,
+                  height: window.innerHeight
+              });
+          }
+
+          // Add event listener
+          window.addEventListener("resize", handleResize);
+
+          // Call handler right away so state gets updated with initial window size
+          handleResize();
+
+          // Remove event listener on cleanup
+          return () => window.removeEventListener("resize", handleResize);
+      }
+  }, []); // Empty array ensures that effect is only run on mount
+  return windowSize;
+};
+

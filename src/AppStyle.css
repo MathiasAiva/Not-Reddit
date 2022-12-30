@@ -10,13 +10,13 @@
 
 body {
   background-color: #dae1e7;
+  overflow-x: hidden;
 }
 .redditBlue {
   background-color: #dae1e7;
 }
 .article {
-  display: flex;
-  padding-top: 5rem;
+  padding-top: 2rem;
 }
 .Link{
   z-index: 1;

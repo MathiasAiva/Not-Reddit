@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getSubreddit } from "../../../API/API";
+
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import {
   dateFormatter,
@@ -7,7 +7,9 @@ import {
   numberFormatter,
 } from "../../../appResources/helperFunctions";
 import "./subredditInfo.css";
+import '../side.css'
 import cakeSvg from "./cake.svg";
+import { getSubreddit } from "../../../API/API";
 
 const getDate = (created) => {
   let { month, day, year } = dateFormatter(created);
@@ -15,18 +17,15 @@ const getDate = (created) => {
 };
 
 export const SubredditInfo = ({ arg }) => {
-  const [subreddit, setSubreddit] = useState({
-    status: "idling",
-    data: {},
-  });
-  let subData = subreddit.data;
 
+  const [subData, setSubData] = useState();
   useEffect(() => {
-    getSubreddit(arg).then((data) =>
-      setSubreddit({ status: "fulfilled", data })
-    );
+    getSubreddit(arg).then((data)=>{
+      setSubData(data)
+    })
   }, [arg]);
-  return subreddit.status === "fulfilled" ? (
+
+  return subData ? (
     <div className="subS">
       <div className="banner"></div>
       <div className="subS-info">
@@ -36,7 +35,7 @@ export const SubredditInfo = ({ arg }) => {
             style={{ display: "flex", alignItems: "center" }}
           >
             <img
-              src={subData.community_icon.replace("amp;", "")}
+              src={subData.community_icon.replace(/amp;/g, "")}
               alt=""
               style={{
                 width: "48px",
@@ -89,10 +88,7 @@ export const SubredditInfo = ({ arg }) => {
             Join
           </button>
         </div>
-        <div className="com-options"></div>
       </div>
-      <div className="subS-rules"></div>
-      <div className="subS-mods"></div>
     </div>
   ) : null;
 };
